@@ -2,4 +2,4 @@
 Game Jam Repo
 
 Joshua Ngerng - branch name waifu
-drafting player movement, collision and double jump
+remaking 2d movement and basic 
