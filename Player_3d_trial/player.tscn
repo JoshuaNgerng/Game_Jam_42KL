@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bnefgd5teim8m"]
+[gd_scene load_steps=5 format=3 uid="uid://bnefgd5teim8m"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_yx2tn"]
+[ext_resource type="Script" path="res://CameraPivot.gd" id="2_cf2qx"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_gsq4b"]
 height = 2.65
@@ -21,3 +22,10 @@ mesh = SubResource("CapsuleMesh_gsq4b")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.269894, 0)
 shape = SubResource("CapsuleShape3D_d8ror")
+
+[node name="CameraPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+script = ExtResource("2_cf2qx")
+
+[node name="PlayerCamera" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0.285113, 0.022408, 3.77129)
