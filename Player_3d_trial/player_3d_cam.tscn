@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2j2n6os4e33t"]
+
+[ext_resource type="PackedScene" uid="uid://bv3viadr5chq8" path="res://polycat.dae" id="1_1u155"]
+[ext_resource type="Script" path="res://player_3d_cam.gd" id="1_lkmba"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tn2qv"]
+radius = 0.449445
+height = 1.41976
+
+[sub_resource type="Environment" id="Environment_6namp"]
+ambient_light_color = Color(1, 1, 1, 1)
+
+[node name="Player_3DCam" type="CharacterBody3D"]
+script = ExtResource("1_lkmba")
+
+[node name="Graphics" parent="." instance=ExtResource("1_1u155")]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Graphics/Armature" index="0"]
+bones/0/position = Vector3(0, 0, 0)
+bones/1/position = Vector3(0, 7.45058e-09, -1.61465)
+bones/1/rotation = Quaternion(-0.227663, -0.0557028, 0.303166, 0.923665)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/position = Vector3(0.41611, 0.12854, 0.186777)
+bones/3/position = Vector3(-0.388168, 0.127661, 0.172132)
+bones/4/position = Vector3(-0.0169323, -0.425221, 0.125134)
+
+[node name="AnimationPlayer" parent="Graphics" index="1"]
+autoplay = "idle"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.702131, 0)
+shape = SubResource("CapsuleShape3D_tn2qv")
+
+[node name="CamBase" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="CamBase"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+environment = SubResource("Environment_6namp")
+current = true
+
+[editable path="Graphics"]

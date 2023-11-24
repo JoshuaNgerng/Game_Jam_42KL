@@ -29,4 +29,4 @@ transform = Transform3D(0.999972, 0.00608883, -0.00426496, -0.00608031, 0.999979
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.03098, 0)
 
 [node name="Camera" type="Camera3D" parent="CameraPivot"]
-transform = Transform3D(1, 0, 0, 0, 0.682687, 0.730711, 0, -0.730711, 0.682687, 0, 0, 3.36874)
+transform = Transform3D(1, 0, 0, 0, 0.682687, 0.730711, 0, -0.730711, 0.682687, 0.000574827, -0.00132084, 3.36928)
