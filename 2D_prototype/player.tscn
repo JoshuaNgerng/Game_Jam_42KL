@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://b340ol6h186vf"]
+[gd_scene load_steps=49 format=3 uid="uid://b340ol6h186vf"]
 
 [ext_resource type="Texture2D" uid="uid://bw4u1pmxvx0mn" path="res://art/Legacy-Fantasy - High Forest 2.3/Character/Idle/Idle-Sheet.png" id="1_gma8i"]
 [ext_resource type="Script" path="res://player.gd" id="1_hof23"]
@@ -316,17 +316,46 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jgpas"]
 height = 45.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b2egj"]
+size = Vector2(23, 50)
+
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 29
 script = ExtResource("1_hof23")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, -8)
 sprite_frames = SubResource("SpriteFrames_tkb0i")
-animation = &"dash"
+animation = &"idle"
 centered = false
 offset = Vector2(-33, -32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_jgpas")
 
+[node name="Top" type="RayCast2D" parent="."]
+position = Vector2(1, -23)
+target_position = Vector2(45, 0)
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(0, -14)
+target_position = Vector2(45, 0)
+
+[node name="TouchNode" type="Node2D" parent="."]
+
+[node name="TouchBox" type="Area2D" parent="TouchNode"]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="AreaEffect" type="CollisionShape2D" parent="TouchNode/TouchBox"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_b2egj")
+
+[node name="CameraPlayer" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_entered" from="TouchNode/TouchBox" to="." method="_on_touch_box_area_entered"]
+[connection signal="area_exited" from="TouchNode/TouchBox" to="." method="_on_touch_box_area_exited"]
