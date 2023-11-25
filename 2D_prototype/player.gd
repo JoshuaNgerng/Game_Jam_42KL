@@ -123,3 +123,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		in_animation = false
 	# (["differen animation"]).has(animated_spirite.animation):
 		#in_animation = false
+		
+func respawn() -> void:
+	position.x = -113
+	position.y = 8
