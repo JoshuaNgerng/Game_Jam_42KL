@@ -11,12 +11,17 @@ config_version=5
 [application]
 
 config/name="2D_prototype"
+run/main_scene="res://test_level.tscn"
 config/features=PackedStringArray("4.1", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [display]
 
 window/stretch/scale=2.0
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/script-ide/plugin.cfg")
 
 [input]
 
