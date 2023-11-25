@@ -44,6 +44,7 @@ texture = ExtResource("1_ktjxr")
 14:0/0 = 0
 14:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 14:0/0/physics_layer_0/angular_velocity = 0.0
+14:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 19:0/0 = 0
 19:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 19:0/0/physics_layer_0/angular_velocity = 0.0
@@ -1431,7 +1432,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_rqkh6")
 
 [node name="TestLevel" type="Node2D"]
-position = Vector2(254, 88)
+position = Vector2(254, 85)
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(-157, 68)

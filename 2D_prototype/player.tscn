@@ -1,10 +1,43 @@
-[gd_scene load_steps=39 format=3 uid="uid://b340ol6h186vf"]
+[gd_scene load_steps=48 format=3 uid="uid://b340ol6h186vf"]
 
 [ext_resource type="Texture2D" uid="uid://bw4u1pmxvx0mn" path="res://art/Legacy-Fantasy - High Forest 2.3/Character/Idle/Idle-Sheet.png" id="1_gma8i"]
 [ext_resource type="Script" path="res://player.gd" id="1_hof23"]
+[ext_resource type="Texture2D" uid="uid://wdp87u3lohhj" path="res://art/Legacy-Fantasy - High Forest 2.3/Character/Attack-01/Attack-01-Sheet.png" id="2_2wevk"]
 [ext_resource type="Texture2D" uid="uid://sghxbwoju71l" path="res://art/Legacy-Fantasy - High Forest 2.3/Character/Jumlp-All/Jump-All-Sheet.png" id="3_rlwiy"]
 [ext_resource type="Texture2D" uid="uid://bgecb0dn5udfk" path="res://art/Legacy-Fantasy - High Forest 2.3/Character/Jump-End/Jump-End-Sheet.png" id="4_ddowp"]
 [ext_resource type="Texture2D" uid="uid://cg2icwo22qsn" path="res://art/Legacy-Fantasy - High Forest 2.3/Character/Run/Run-Sheet.png" id="6_m555m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7fdct"]
+atlas = ExtResource("2_2wevk")
+region = Rect2(0, 0, 96, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trx8p"]
+atlas = ExtResource("2_2wevk")
+region = Rect2(96, 0, 96, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nnldp"]
+atlas = ExtResource("2_2wevk")
+region = Rect2(192, 0, 96, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_74rht"]
+atlas = ExtResource("2_2wevk")
+region = Rect2(288, 0, 96, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_256j8"]
+atlas = ExtResource("2_2wevk")
+region = Rect2(576, 0, 96, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgjql"]
+atlas = ExtResource("2_2wevk")
+region = Rect2(480, 0, 96, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8oi3k"]
+atlas = ExtResource("2_2wevk")
+region = Rect2(384, 0, 96, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uv41p"]
+atlas = ExtResource("2_2wevk")
+region = Rect2(672, 0, 96, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jshh2"]
 atlas = ExtResource("1_gma8i")
@@ -134,6 +167,35 @@ region = Rect2(560, 0, 80, 80)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_7fdct")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trx8p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nnldp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_74rht")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_256j8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xgjql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8oi3k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uv41p")
+}],
+"loop": false,
+"name": &"dash",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_jshh2")
 }, {
 "duration": 1.0,
@@ -260,7 +322,7 @@ script = ExtResource("1_hof23")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, -8)
 sprite_frames = SubResource("SpriteFrames_tkb0i")
-animation = &"run"
+animation = &"dash"
 centered = false
 offset = Vector2(-33, -32)
 
