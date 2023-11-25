@@ -3,8 +3,8 @@ extends CharacterBody2D
 @export var speed : float = 200.0
 @export var jump_velocity : float = -300.0
 @export var jump_double_v : float = -250.0
-@export var dash_v : float = 600.0
-@export var dash_timer_max : float = 4
+@export var dash_v : float = 1500.0
+@export var dash_timer_max : float = 2
 @export var dash_cooldown : float = 5
 @onready var animated_sprite : AnimatedSprite2D = $AnimatedSprite2D
 
@@ -50,7 +50,8 @@ func _physics_process(delta : float) -> void:
 		move_player()
 	else:
 		do_dash()
-	
+	if next_dash > 0:
+		next_dash -= 1
 
 	move_and_slide()
 	update_animation()
@@ -112,8 +113,6 @@ func do_dash() -> void:
 	else:
 		dash_vector = Vector2(-1, 0)
 	velocity.x = dash_vector.normalized().x * dash_v
-	if next_dash > 0:
-		next_dash -= 1
 	if dash_timer > 0:
 		dash_timer -= 1
 	if dash_timer == 0:
