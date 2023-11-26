@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://db8mrueq8sp70"
+path="res://.godot/imported/DALL·E 2023-11-26 13.22.13 - A 2D pixel art style image of a dungeon cave level, similar to the second image previously generated. The design emphasizes a flat, two-dimensional la.png-25f928d87e4b66c3711ce238e9a65b54.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://art/DALL·E 2023-11-26 13.22.13 - A 2D pixel art style image of a dungeon cave level, similar to the second image previously generated. The design emphasizes a flat, two-dimensional la.png"
+dest_files=["res://.godot/imported/DALL·E 2023-11-26 13.22.13 - A 2D pixel art style image of a dungeon cave level, similar to the second image previously generated. The design emphasizes a flat, two-dimensional la.png-25f928d87e4b66c3711ce238e9a65b54.ctex"]
+
+[params]
+
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1
