@@ -126,10 +126,8 @@ func die() -> void:
 	queue_free()
 
 func interaction_state_init() -> void:
-	print("length of list ", interaction_list.size())
 	for i in interaction_list.size():
 		var type = interaction_list[i].interact_type
-		print("type ", type)
 		if type == 0:
 			die()
 		elif type == 1:
@@ -153,6 +151,15 @@ func _on_touch_box_area_entered(area: Area2D) -> void:
 	interaction_state_init()
 
 func _on_touch_box_area_exited(area: Area2D) -> void:
+	interaction_list.erase(area)
+	interaction_state_remove(area)
+	has_double_jump = false
+
+func _on_area_2d_area_entered(area):
+	interaction_list.insert(0, area)
+	interaction_state_init()
+
+func _on_area_2d_area_exited(area):
 	interaction_list.erase(area)
 	interaction_state_remove(area)
 	has_double_jump = false

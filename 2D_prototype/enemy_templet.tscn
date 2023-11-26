@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcrkvtav8iyrk"]
+
+[ext_resource type="PackedScene" uid="uid://blgg2m450i60p" path="res://interactable_area.tscn" id="1_kpr1u"]
+[ext_resource type="Script" path="res://enemy_templet.gd" id="1_odin0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jiwo2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vnfpf"]
+size = Vector2(26, 25)
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_odin0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_jiwo2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Area2D" parent="Node2D" instance=ExtResource("1_kpr1u")]
+position = Vector2(0, 0)
+
+[node name="CollisionShape2D" parent="Node2D/Area2D" index="0"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_vnfpf")
+
+[connection signal="area_entered" from="Node2D/Area2D" to="." method="_on_area_2d_area_entered"]
+
+[editable path="Node2D/Area2D"]
