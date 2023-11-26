@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://ftv0pnj5ifgi"]
+[gd_scene load_steps=11 format=3 uid="uid://ftv0pnj5ifgi"]
 
 [ext_resource type="Texture2D" uid="uid://ci0x6ovhjkevt" path="res://art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_ktjxr"]
 [ext_resource type="PackedScene" uid="uid://cskbj5ybfou28" path="res://respawn_player.tscn" id="3_xoy5r"]
+[ext_resource type="PackedScene" uid="uid://dcrkvtav8iyrk" path="res://enemy_templet.tscn" id="4_3t65m"]
 [ext_resource type="PackedScene" uid="uid://blgg2m450i60p" path="res://interactable_area.tscn" id="4_b2fts"]
+[ext_resource type="PackedScene" uid="uid://c7so7a0h2facb" path="res://enemy_left_right.tscn" id="5_qsaaf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rqkh6"]
 texture = ExtResource("1_ktjxr")
@@ -1472,6 +1474,12 @@ interact_type = 1
 [node name="CollisionShape2D" parent="climb2" index="0"]
 position = Vector2(409, -121)
 shape = SubResource("RectangleShape2D_ltorm")
+
+[node name="Enemy" parent="." instance=ExtResource("4_3t65m")]
+position = Vector2(359, 41)
+
+[node name="Enemy_left_right" parent="." instance=ExtResource("5_qsaaf")]
+position = Vector2(106, 132)
 
 [editable path="kill"]
 [editable path="climb1"]

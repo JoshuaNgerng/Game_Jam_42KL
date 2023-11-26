@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7so7a0h2facb"]
+
+[ext_resource type="PackedScene" uid="uid://blgg2m450i60p" path="res://interactable_area.tscn" id="1_nkliw"]
+[ext_resource type="Script" path="res://enemy_left_right.gd" id="1_u2aqi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pk0l7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sir1x"]
+size = Vector2(25, 22.4375)
+
+[node name="Enemy_left_right" type="CharacterBody2D"]
+script = ExtResource("1_u2aqi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_pk0l7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="TouchEffect" type="Node2D" parent="."]
+
+[node name="TouchArea" parent="TouchEffect" instance=ExtResource("1_nkliw")]
+position = Vector2(0, 0)
+
+[node name="CollisionShape2D" parent="TouchEffect/TouchArea" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_sir1x")
+
+[editable path="TouchEffect/TouchArea"]
