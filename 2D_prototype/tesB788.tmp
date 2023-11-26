@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://ftv0pnj5ifgi"]
+[gd_scene load_steps=11 format=3 uid="uid://ftv0pnj5ifgi"]
 
 [ext_resource type="Texture2D" uid="uid://ci0x6ovhjkevt" path="res://art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_ktjxr"]
+[ext_resource type="Script" path="res://interactable_area.gd" id="3_nc6x8"]
 [ext_resource type="PackedScene" uid="uid://cskbj5ybfou28" path="res://respawn_player.tscn" id="3_xoy5r"]
 [ext_resource type="PackedScene" uid="uid://blgg2m450i60p" path="res://interactable_area.tscn" id="4_b2fts"]
 
@@ -1431,14 +1432,17 @@ texture = ExtResource("1_ktjxr")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_rqkh6")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sm3mr"]
-size = Vector2(1453.13, 121.75)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r3b1x"]
+size = Vector2(348.563, 112.938)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_i7sca"]
-size = Vector2(199.75, 63)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rddst"]
+size = Vector2(114.125, 43.875)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ltorm"]
-size = Vector2(217.875, 73.5)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vdfks"]
+size = Vector2(159, 47.875)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ad4pi"]
+size = Vector2(178.563, 41.9375)
 
 [node name="TestLevel" type="Node2D"]
 position = Vector2(253, 85)
@@ -1453,26 +1457,48 @@ layer_0/tile_data = PackedInt32Array(-6, 262144, 7, 65530, 262144, 8, 131066, 26
 [node name="Respawn_player" parent="." instance=ExtResource("3_xoy5r")]
 position = Vector2(-186, 8)
 
-[node name="kill" parent="." instance=ExtResource("4_b2fts")]
+[node name="Area2D2" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+script = ExtResource("3_nc6x8")
+interact_type = 3
 
-[node name="CollisionShape2D" parent="kill" index="0"]
-position = Vector2(1236, 218)
-shape = SubResource("RectangleShape2D_sm3mr")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(196, 34)
+shape = SubResource("RectangleShape2D_r3b1x")
 
-[node name="climb1" parent="." instance=ExtResource("4_b2fts")]
+[node name="Area2D3" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+script = ExtResource("3_nc6x8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D3"]
+position = Vector2(551.938, -100.938)
+shape = SubResource("RectangleShape2D_rddst")
+
+[node name="Area2D" parent="." instance=ExtResource("4_b2fts")]
+position = Vector2(-17, -3)
 interact_type = 1
 
-[node name="CollisionShape2D" parent="climb1" index="0"]
-position = Vector2(-195.875, -63)
-shape = SubResource("RectangleShape2D_i7sca")
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(-122, -64)
+shape = SubResource("RectangleShape2D_vdfks")
 
-[node name="climb2" parent="." instance=ExtResource("4_b2fts")]
-interact_type = 1
+[node name="Area2D4" parent="." instance=ExtResource("4_b2fts")]
+position = Vector2(115, -25)
 
-[node name="CollisionShape2D" parent="climb2" index="0"]
-position = Vector2(409, -121)
-shape = SubResource("RectangleShape2D_ltorm")
+[node name="CollisionShape2D" parent="Area2D4" index="0"]
+position = Vector2(699, 226)
+shape = SubResource("RectangleShape2D_ad4pi")
 
-[editable path="kill"]
-[editable path="climb1"]
-[editable path="climb2"]
+[node name="Area2D5" parent="." instance=ExtResource("4_b2fts")]
+position = Vector2(-83, 173)
+
+[node name="CollisionShape2D" parent="Area2D5" index="0"]
+position = Vector2(328, 135)
+
+[editable path="Area2D"]
+[editable path="Area2D4"]
+[editable path="Area2D5"]

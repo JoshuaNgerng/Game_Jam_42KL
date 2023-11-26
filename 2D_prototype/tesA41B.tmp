@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://ftv0pnj5ifgi"]
+[gd_scene load_steps=7 format=3 uid="uid://ftv0pnj5ifgi"]
 
 [ext_resource type="Texture2D" uid="uid://ci0x6ovhjkevt" path="res://art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_ktjxr"]
 [ext_resource type="PackedScene" uid="uid://cskbj5ybfou28" path="res://respawn_player.tscn" id="3_xoy5r"]
-[ext_resource type="PackedScene" uid="uid://blgg2m450i60p" path="res://interactable_area.tscn" id="4_b2fts"]
+[ext_resource type="PackedScene" uid="uid://3pc2ajxy20o2" path="res://killzone.tscn" id="4_3gkyv"]
+[ext_resource type="PackedScene" uid="uid://blgg2m450i60p" path="res://test_area.tscn" id="4_b2fts"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rqkh6"]
 texture = ExtResource("1_ktjxr")
@@ -1431,17 +1432,8 @@ texture = ExtResource("1_ktjxr")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_rqkh6")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sm3mr"]
-size = Vector2(1453.13, 121.75)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_i7sca"]
-size = Vector2(199.75, 63)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ltorm"]
-size = Vector2(217.875, 73.5)
-
 [node name="TestLevel" type="Node2D"]
-position = Vector2(253, 85)
+position = Vector2(254, 85)
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(-157, 68)
@@ -1453,26 +1445,13 @@ layer_0/tile_data = PackedInt32Array(-6, 262144, 7, 65530, 262144, 8, 131066, 26
 [node name="Respawn_player" parent="." instance=ExtResource("3_xoy5r")]
 position = Vector2(-186, 8)
 
-[node name="kill" parent="." instance=ExtResource("4_b2fts")]
+[node name="Area2D" parent="." instance=ExtResource("4_3gkyv")]
+position = Vector2(572, 216)
 
-[node name="CollisionShape2D" parent="kill" index="0"]
-position = Vector2(1236, 218)
-shape = SubResource("RectangleShape2D_sm3mr")
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(989, 19)
 
-[node name="climb1" parent="." instance=ExtResource("4_b2fts")]
-interact_type = 1
+[node name="test" parent="." instance=ExtResource("4_b2fts")]
+position = Vector2(500, 28)
 
-[node name="CollisionShape2D" parent="climb1" index="0"]
-position = Vector2(-195.875, -63)
-shape = SubResource("RectangleShape2D_i7sca")
-
-[node name="climb2" parent="." instance=ExtResource("4_b2fts")]
-interact_type = 1
-
-[node name="CollisionShape2D" parent="climb2" index="0"]
-position = Vector2(409, -121)
-shape = SubResource("RectangleShape2D_ltorm")
-
-[editable path="kill"]
-[editable path="climb1"]
-[editable path="climb2"]
+[editable path="Area2D"]
