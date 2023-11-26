@@ -327,7 +327,7 @@ script = ExtResource("1_hof23")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, -8)
 sprite_frames = SubResource("SpriteFrames_tkb0i")
-animation = &"idle"
+animation = &"new_animation"
 centered = false
 offset = Vector2(-33, -32)
 
