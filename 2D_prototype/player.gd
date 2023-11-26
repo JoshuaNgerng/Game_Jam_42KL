@@ -3,11 +3,11 @@ extends CharacterBody2D
 @export var speed : float = 200.0
 @export var jump_velocity : float = -300.0
 @export var jump_double_v : float = -250.0
-@export var dash_v : float = 3000.0
+@export var dash_v : float = 1500.0
 @export var dash_timer_max : float = 2
 @export var dash_cooldown : float = 5
 @onready var animated_sprite : AnimatedSprite2D = $AnimatedSprite2D
-
+@onready var interaction_list : Array = []
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 500
 #ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -19,11 +19,15 @@ var has_double_jump : bool = false
 var was_in_air : bool = true
 var direction : Vector2 = Vector2.ZERO
 var in_animation : bool = false
+var climb_status : bool = false
+var swim_status : bool = false
 
 func _physics_process(delta : float) -> void:
 
 	# Handle Jump.
 	if Input.is_action_just_pressed("jump"):
+		if climb_status == true:
+			has_double_jump = false
 		if is_on_floor():
 			jump()
 			in_dash = false
@@ -36,7 +40,7 @@ func _physics_process(delta : float) -> void:
 
 	# Add the gravity.
 	if not is_on_floor():
-		if in_dash == false:
+		if in_dash == false or swim_status == false or climb_status == false:
 			velocity.y += gravity * delta
 		was_in_air = true
 	else:
@@ -57,7 +61,6 @@ func _physics_process(delta : float) -> void:
 	update_animation()
 
 
-
 func update_animation() -> void:
 	if not in_animation:
 		if not is_on_floor():
@@ -75,6 +78,8 @@ func move_player() -> void:
 		velocity.x = direction.x * speed
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
+	if swim_status == true or climb_status == true:
+		velocity.y = direction.y * speed
 
 func update_direction_direction() -> void:
 	if direction.x > 0:
@@ -101,7 +106,6 @@ func double_jump() -> void:
 
 func dash_init() -> void:
 	in_dash = true
-	next_dash = dash_cooldown
 	dash_timer = dash_timer_max
 	animated_sprite.play("dash")
 	in_animation = true
@@ -118,12 +122,37 @@ func do_dash() -> void:
 	if dash_timer == 0:
 		in_dash = false
 
+func die() -> void:
+	queue_free()
+
+func interaction_state_init() -> void:
+	print("length of list ", interaction_list.size())
+	for i in interaction_list.size():
+		var type = interaction_list[i].interact_type
+		print("type ", type)
+		if type == 0:
+			die()
+		elif type == 1:
+			climb_status = true
+		elif  type == 2:
+			swim_status = true
+
+func interaction_state_remove(area: Area2D) -> void:
+	var type = area.interact_type
+	if type == 1:
+		climb_status = false
+	elif type == 2:
+		swim_status = false
+
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if (["jump_start", "jump_end", "dash"]).has(animated_sprite.animation):
 		in_animation = false
-	# (["differen animation"]).has(animated_spirite.animation):
-		#in_animation = false
-		
-func respawn() -> void:
-	position.x = -113
-	position.y = 8
+
+func _on_touch_box_area_entered(area: Area2D) -> void:
+	interaction_list.insert(0, area)
+	interaction_state_init()
+
+func _on_touch_box_area_exited(area: Area2D) -> void:
+	interaction_list.erase(area)
+	interaction_state_remove(area)
+	has_double_jump = false
