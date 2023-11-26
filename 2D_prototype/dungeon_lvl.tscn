@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://cmv5rgv7ys4fi"]
+[gd_scene load_steps=60 format=3 uid="uid://cmv5rgv7ys4fi"]
 
 [ext_resource type="Texture2D" uid="uid://caqk3j2ueyh6t" path="res://art/Dungeon Platformer Tileset [16x16][FREE] - RottingPixels/tileset.png" id="1_l7d7e"]
 [ext_resource type="Texture2D" uid="uid://dj4aifolgvnj0" path="res://art/Legacy-Fantasy - High Forest 2.3/Assets/Buildings.png" id="2_up4ss"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://7gfehch30goe" path="res://art/Legacy-Fantasy - High Forest 2.3/Assets/Props-Rocks.png" id="5_y63nx"]
 [ext_resource type="Texture2D" uid="uid://ci0x6ovhjkevt" path="res://art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="6_grekh"]
 [ext_resource type="PackedScene" uid="uid://blgg2m450i60p" path="res://interactable_area.tscn" id="8_smpgh"]
+[ext_resource type="AudioStream" uid="uid://dvh667efaelot" path="res://tunetank.com_5688_time-to-breathe_by_crystal-squad.mp3" id="9_e1jcj"]
 [ext_resource type="PackedScene" uid="uid://cskbj5ybfou28" path="res://respawn_player.tscn" id="9_kqp4e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qo6wb"]
@@ -6047,7 +6048,7 @@ position = Vector2(42, 869)
 shape = SubResource("RectangleShape2D_scinv")
 
 [node name="Respawn_player" parent="." instance=ExtResource("9_kqp4e")]
-position = Vector2(67, -44)
+position = Vector2(62, -32)
 
 [node name="Climb_gf" parent="." instance=ExtResource("8_smpgh")]
 interact_type = 1
@@ -6175,6 +6176,18 @@ interact_type = 1
 position = Vector2(-264, 257)
 shape = SubResource("RectangleShape2D_08wlb")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_e1jcj")
+volume_db = -35.0
+autoplay = true
+
+[node name="Area2D" parent="." instance=ExtResource("8_smpgh")]
+position = Vector2(374, -88)
+interact_type = 3
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(258, 1113)
+
 [editable path="Spike_gf"]
 [editable path="Lava_gf"]
 [editable path="Spike2_gf"]
@@ -6213,3 +6226,4 @@ shape = SubResource("RectangleShape2D_08wlb")
 [editable path="Climb_1fl3"]
 [editable path="Climb_1fl2"]
 [editable path="Climb_1fl1"]
+[editable path="Area2D"]

@@ -132,8 +132,10 @@ func interaction_state_init() -> void:
 			die()
 		elif type == 1:
 			climb_status = true
-		elif  type == 2:
+		elif type == 2:
 			swim_status = true
+		elif type == 3:
+			get_tree().change_scene_to_file("res://thank_you.tscn")
 
 func interaction_state_remove(area: Area2D) -> void:
 	var type = area.interact_type
