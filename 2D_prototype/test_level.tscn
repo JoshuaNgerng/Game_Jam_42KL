@@ -6,6 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://cskbj5ybfou28" path="res://respawn_player.tscn" id="5_5n6o4"]
 [ext_resource type="Texture2D" uid="uid://dy8he68fjwc48" path="res://art/tileset.png" id="5_6foda"]
 [ext_resource type="PackedScene" uid="uid://blgg2m450i60p" path="res://interactable_area.tscn" id="5_6mip5"]
+[gd_scene load_steps=11 format=3 uid="uid://ftv0pnj5ifgi"]
+
+[ext_resource type="Texture2D" uid="uid://ci0x6ovhjkevt" path="res://art/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="1_ktjxr"]
+[ext_resource type="PackedScene" uid="uid://cskbj5ybfou28" path="res://respawn_player.tscn" id="3_xoy5r"]
+[ext_resource type="PackedScene" uid="uid://dcrkvtav8iyrk" path="res://enemy_templet.tscn" id="4_3t65m"]
+[ext_resource type="PackedScene" uid="uid://blgg2m450i60p" path="res://interactable_area.tscn" id="4_b2fts"]
+[ext_resource type="PackedScene" uid="uid://c7so7a0h2facb" path="res://enemy_left_right.tscn" id="5_qsaaf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rqkh6"]
 texture = ExtResource("1_ktjxr")
@@ -23270,8 +23277,17 @@ size = Vector2(6907.98, 28.1797)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r3a1g"]
 size = Vector2(8861.99, 28.1797)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sm3mr"]
+size = Vector2(1453.13, 121.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i7sca"]
+size = Vector2(199.75, 63)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ltorm"]
+size = Vector2(217.875, 73.5)
+
 [node name="TestLevel" type="Node2D"]
-position = Vector2(254, 88)
+position = Vector2(253, 85)
 
 [node name="Respawn_player" parent="." instance=ExtResource("5_5n6o4")]
 position = Vector2(109, 3634)
